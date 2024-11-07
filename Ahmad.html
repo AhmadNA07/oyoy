@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Aplikasi Tiket Kereta</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.login-box {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.login-header h2 {
+    margin: 0;
+    color: #34495e;
+}
+
+.login-header p {
+    color: #7f8c8d;
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    color: #34495e;
+}
+
+.form-group input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #dcdde1;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    color: white;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Loading screen */
+.loading-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+    </style>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <h2>Selamat Datang</h2>
+                <p>@Javatrain.id</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="button" onclick="login()">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="spinner"></div>
+        <p>Memproses login...</p>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function login() {
+    // Tampilkan loading screen
+    const loadingScreen = document.getElementById('loadingScreen');
+    loadingScreen.style.display = 'flex';
+
+    // Simulasi proses login
+    setTimeout(() => {
+        // Sembunyikan loading screen
+        loadingScreen.style.display = 'none';
+
+        // Cek login sederhana (di sini bisa dikembangkan dengan validasi lebih lanjut)
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        if (username === "jt" && password === "id") {
+            // Redirect ke halaman Atha.html jika login berhasil
+            window.location.href = "Atha.html";
+        } else {
+            // Tampilkan pesan jika login gagal
+            alert("Username atau password salah!");
+        }
+    }, 2000); // Simulasi loading selama 2 detik
+}
+
+    </script>
+</body>
+</html>
